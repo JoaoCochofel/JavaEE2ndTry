@@ -39,11 +39,11 @@
 
         <b:container>
             <br></br>
-            <h:form styleClass="form-horizontal">
 
-                <h3 class="form-signin-heading">Backup da BD</h3>
-                <br></br>
-                <b:selectMultiMenu value="3" required="true" > 
+            <h:form>
+                
+                <b:selectMultiMenu value="3" label="Enter your name" required="true" 
+                                   renderLabel="true" > 
                     <f:facet name="prepend">
                         <h:outputText value="Escala de tempo:" />
                     </f:facet>
@@ -52,19 +52,17 @@
                     <f:selectItem itemLabel="Minutos" itemValue="2" />
                     <f:selectItem itemLabel="Horas" itemValue="3" />
                 </b:selectMultiMenu>
-
-                <h:panelGrid columns="2" cellpadding="5">
-                    <b:inputText>
-                        <f:facet name="prepend">
-                            <h:outputText value="Tempo:" />  
-                        </f:facet>
-                    </b:inputText>
-                    
-                </h:panelGrid>
-                <b:commandButton look="primary btn-block" value="Sign In" icon="log-in" size="lg" />
-            
-<h:message for="Number" style="color:red"/>
+                
+                <b:inputText id="nome" label="Enter your name"
+                             required="true" renderLabel="true"   />
+                
+                <b:inputText id="Tempo" label="What's your age?"
+                             required="true" renderLabel="true" />
+                <h:message for="Tempo" />
+                <b:commandButton update="@form" value="Validate constraints" />
             </h:form>
+
+
         </b:container>
 
         <center>
