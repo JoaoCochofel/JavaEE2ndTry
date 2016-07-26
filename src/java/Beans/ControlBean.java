@@ -108,4 +108,30 @@ public class ControlBean implements Serializable{
 */
         return "";
     }
+    
+    public String createUser(){
+        return "newUser";
+    }
+    
+    public String viewUser() {
+        return "viewUser";
+    }
+
+    public String editUser() {
+        return "editUser";
+    }
+
+    public String viewUserType() {
+        return "viewUserType";
+    }
+
+    public String createUserType() {
+        return "createUserType";
+    }
+
+    public String editUserType() {
+        return "editUserType";
+    }
+    
+    
 }
