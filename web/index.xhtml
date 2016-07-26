@@ -26,8 +26,6 @@
                     </f:facet>
                 </b:inputText>
                 <h:message for="Username" style="color:red"/>
-                
-                
                 <b:inputText id="Password" placeholder="Password" type="password" value="#{controlBean.password}" required="true">
                     <f:facet name="prepend">
                         <b:iconAwesome name="key" />
@@ -35,6 +33,9 @@
                 </b:inputText>
                 <h:message for="Password" style="color:red"/>
                 <b:commandButton look="primary btn-block" value="Sign In" icon="log-in" size="lg" action="#{controlBean.checkUser}"/>
+            </h:form>
+            <h:form styleClass="form-signin" prependId="false">
+                <b:commandButton look="primary btn-block" value="Registar" icon="log-in" size="lg" action="#{controlBean.createUser}"/>
             </h:form>
         </b:container>
     </h:body>

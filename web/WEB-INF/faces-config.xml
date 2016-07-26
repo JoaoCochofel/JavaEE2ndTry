@@ -38,5 +38,51 @@
         </navigation-case>
     </navigation-rule>
     
+    <navigation-rule>
+        <navigation-case>
+            <from-outcome>newUser</from-outcome>
+            <to-view-id>/faces/utilizador/Create.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+    <navigation-rule>
+        <navigation-case>
+            <from-outcome>viewUser</from-outcome>
+            <to-view-id>/faces/utilizador/View.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+    <navigation-rule>
+        <navigation-case>
+            <from-outcome>createUser</from-outcome>
+            <to-view-id>/faces/utilizador/Create.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+   
+    <navigation-rule>
+        <navigation-case>
+            <from-outcome>editUser</from-outcome>
+            <to-view-id>/faces/utilizador/Edit.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule> 
+    
+    <navigation-rule>
+        <navigation-case>
+            <from-outcome>viewUserType</from-outcome>
+            <to-view-id>/faces/tipoUtilizador/View.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule> 
+    <navigation-rule>
+        <navigation-case>
+            <from-outcome>createUserType</from-outcome>
+            <to-view-id>/faces/tipoUtilizador/Create.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule> 
+    <navigation-rule>
+        <navigation-case>
+            <from-outcome>editUserType</from-outcome>
+            <to-view-id>/faces/tipoUtilizador/Edit.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule> 
     
 </faces-config>
