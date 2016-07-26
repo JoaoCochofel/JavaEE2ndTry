@@ -5,13 +5,19 @@
  */
 package Beans;
 
+import Entities.Utilizador;
+import EntityBeans.UtilizadorFacade;
 import java.io.Serializable;
+import java.util.List;
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.inject.Named;
 import javax.validation.constraints.Size;
 import org.hibernate.validator.constraints.NotEmpty;
+
+
 
 /**
  *
@@ -24,6 +30,9 @@ import org.hibernate.validator.constraints.NotEmpty;
 @Named(value = "ControlBean")
 public class ControlBean implements Serializable{
 
+    
+    @EJB
+    UtilizadorFacade userFac;
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
     
@@ -64,41 +73,20 @@ public class ControlBean implements Serializable{
     }
     
     public String checkUser() {
-
-        String ret = null;
-        String user = this.getUsername();
-        String pass = this.getPassword();
-
-        //Variáveis criadas para teste, sendo que vão ser alimentadas com informação
-        // proveniente da bd
-        String valUser = "user";
-        String valPass = "pass";
-        String valPerfil = "admin";
-
-        System.out.println("User inserido: " + user);
-        System.out.println("Pass inserida: " + pass);
-
-        if (user.equals(valUser)) {
-            if (pass.equals(valPass)) {
-
-                if (valPerfil.equals("admin")) {
-                    ret = "adminPage";
-                } else if (valPerfil.equals("gestor")) {
-                    ret = "managePage";
-                } else {
-                    ret = "userPage";
+        List<Utilizador> userList;
+        userList = userFac.findAll();
+        for (Utilizador utilizador : userList) {
+            if(utilizador.getNome().equals(username) && utilizador.getPassWord().equals(password)){
+                switch(utilizador.getTipoUtilizador().getDesignacao()){
+                    case "Admin": return "adminPage";
+                    
+                    case "Manager": return "managerPage";
+                    
+                    case "User": return "userPage"; 
                 }
-
-            } else { //password errada
-                ret = "error";
-                //addMessage("Password inexistente");
             }
-
-        } else { //user inexistente
-            
-            ret = "error";
         }
-        return ret;
+        return "error";
     }
     
     public String createUser(){

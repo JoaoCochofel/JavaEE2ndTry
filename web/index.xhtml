@@ -32,7 +32,7 @@
                     </f:facet>
                 </b:inputText>
                 <h:message for="Password" style="color:red"/>
-                <b:commandButton look="primary btn-block" value="Sign In" icon="log-in" size="lg" action="#{controlBean.checkUser}"/>
+                <b:commandButton look="primary btn-block" value="Sign In" icon="log-in" size="lg" action="#{controlBean.checkUser()}"/>
             </h:form>
             <h:form styleClass="form-signin" prependId="false">
                 <b:commandButton look="primary btn-block" value="Registar" icon="log-in" size="lg" action="#{controlBean.createUser}"/>
