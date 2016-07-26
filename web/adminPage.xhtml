@@ -42,24 +42,12 @@
 
             <h:form>
                 
-                <b:selectMultiMenu value="3" label="Enter your name" required="true" 
-                                   renderLabel="true" > 
-                    <f:facet name="prepend">
-                        <h:outputText value="Escala de tempo:" />
-                    </f:facet>
-
-                    <f:selectItem itemLabel="Segundos" itemValue="1" />
-                    <f:selectItem itemLabel="Minutos" itemValue="2" />
-                    <f:selectItem itemLabel="Horas" itemValue="3" />
-                </b:selectMultiMenu>
-                
-                <b:inputText id="nome" label="Enter your name"
-                             required="true" renderLabel="true"   />
-                
-                <b:inputText id="Tempo" label="What's your age?"
-                             required="true" renderLabel="true" />
+                <h3 class="form-signin-heading">Backup</h3>
+                <b:inputText id="Tempo" label="Tempo em segundos:"
+                             required="true" renderLabel="true" value="#{controlBackup.tempo}"/>
                 <h:message for="Tempo" />
-                <b:commandButton update="@form" value="Validate constraints" />
+                <br></br>
+                <b:commandButton update="@form" value="Fazer backup" action="#{controlBackup.makeBackup}"/>
             </h:form>
 
 
