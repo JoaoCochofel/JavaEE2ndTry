@@ -5,13 +5,17 @@
  */
 package Beans;
 
+import EntityBeans.UtilizadorFacade;
 import java.io.Serializable;
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.inject.Named;
 import javax.validation.constraints.Size;
 import org.hibernate.validator.constraints.NotEmpty;
+
+
 
 /**
  *
@@ -63,8 +67,10 @@ public class ControlBean implements Serializable{
         this.password = password;
     }
     
-    public String checkUser() {
+    public String checkUser(String userName, String passWord) {
 
+        
+/*
         String ret = null;
         String user = this.getUsername();
         String pass = this.getPassword();
@@ -98,6 +104,8 @@ public class ControlBean implements Serializable{
             
             ret = "error";
         }
-        return ret;
+
+*/
+        return "";
     }
 }

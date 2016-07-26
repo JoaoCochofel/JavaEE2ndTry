@@ -21,7 +21,10 @@ public class Utilizador implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long idUtilizador;
-
+    
+    @Basic
+    private String passWord;
+    
     @Basic
     private long telefone;
 
