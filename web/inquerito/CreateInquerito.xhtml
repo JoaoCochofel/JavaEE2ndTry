@@ -9,13 +9,16 @@
     </h:head>
     <h:body>
             <h:form>
-                <ui:repeat value="#{managePergunta.items1}" var="item2">
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<p:outputLabel for="foo" value="#{item2.label}" />
-                    <p:inputText id="foo" value="#{item2.value}" />
-                    <p:commandButton value="Remove" action="#{managePergunta.remove2(item2)}" update="@form" />
+                <p:outputLabel for="bar" value="Pergunta:" />
+                <p:inputText id="bar" value="#{managePergunta.pergunta}" />
+                <ui:repeat value="#{managePergunta.i}" var="item">
+                    <p:outputLabel for="foo" value="Resposta #{managePergunta.i}" />
+                    <p:inputText id="foo" value="#{managePergunta.resposta}" />
+                    <p:commandButton value="Remove" action="#{managePergunta.remove(item)}" update="@form" />
                     <br/>
                 </ui:repeat>
-                <p:commandButton value="Add" action="#{managePergunta.add2(item1.label)}" update="@form" />
+                <p:commandButton value="Add" action="#{managePergunta.add}" update="@form" />
+                <p:commandButton value="Submit" action="#{managePergunta.addMap}" />
             </h:form>
     </h:body>
 </html>

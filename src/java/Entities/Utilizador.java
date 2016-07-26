@@ -24,6 +24,14 @@ public class Utilizador implements Serializable {
     
     @Basic
     private String passWord;
+
+    public String getPassWord() {
+        return passWord;
+    }
+
+    public void setPassWord(String passWord) {
+        this.passWord = passWord;
+    }
     
     @Basic
     private long telefone;
