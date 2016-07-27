@@ -6,9 +6,16 @@
 package Beans;
 
 import Entities.Inquerito;
+import Entities.Pergunta;
+import Entities.Resposta;
 import EntityBeans.InqueritoFacade;
+import EntityBeans.PerguntaFacade;
+import EntityBeans.RespostaFacade;
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
@@ -19,28 +26,63 @@ import javax.faces.bean.ViewScoped;
  */
 @ManagedBean
 @ViewScoped
-public class InqueritosLister {
+public class InqueritosLister implements Serializable{
     private List<Inquerito> inqueritos;
-    private List<String> listaInqueritos;
+    private Map<Pergunta, List<Resposta>> perguntasRespostas;
+    private List<Resposta> respostasDadas;
+    long idInq;
+    
+    private Inquerito inquerito;
+    
     @EJB
     InqueritoFacade incFac;
-
-    public List<String> getListaInqueritos() {
-        fetchInqueritos();
-        listaInqueritos = new ArrayList();
-        for (Inquerito inc : inqueritos) {
-            listaInqueritos.add(inc.getTituloInquerito());
-        }
-        return listaInqueritos;
-    }
-
-    public void setListaInqueritos(List<String> listaInqueritos) {
-        this.listaInqueritos = listaInqueritos;
-    }
-
+    @EJB
+    PerguntaFacade perFac;
+    @EJB
+    RespostaFacade resFac;
     
+
+    public List<Resposta> getRespostasDadas() {
+        return respostasDadas;
+    }
+
+    public void setRespostasDadas(List<Resposta> respostasDadas) {
+        this.respostasDadas = respostasDadas;
+    }
+    
+    public void setInquerito(Inquerito inquerito){
+        this.inquerito = inquerito;
+    }
+    
+    public Inquerito getInquerito(){
+        List<Pergunta> tmpPergunta = new ArrayList();
+        List<Resposta> tmpResposta = new ArrayList();
+        tmpPergunta = perFac.findAll();
+        tmpResposta = resFac.findAll();
+        List<Resposta> resTmp2;
+        perguntasRespostas = new HashMap();
+        inquerito = inqueritos.get((int)idInq);
+        for (Pergunta per : tmpPergunta) {
+            resTmp2 = new ArrayList();
+            if(per.getInquerito().getIdInquerito() == idInq){
+                for (Resposta resposta : tmpResposta) {
+                    if(resposta.getPergunta().getIdPergunta().equals(per.getIdPergunta())){
+                        resTmp2.add(resposta);
+                    }
+                }
+            }
+            perguntasRespostas.put(per, resTmp2);
+        }
+        return inquerito;
+    }
+    
+    public String selectInq(long idInq){
+        this.idInq = idInq;
+        return("View");
+    }
     
     public List<Inquerito> getInqueritos() {
+        fetchInqueritos();
         return inqueritos;
     }
 
@@ -48,17 +90,13 @@ public class InqueritosLister {
         this.inqueritos = inqueritos;
     }
     
-    public List<String> listaInqueritos(){
-        fetchInqueritos();
-        List<String> lstInc = new ArrayList();
-        for (Inquerito inc : inqueritos) {
-            lstInc.add(inc.getTituloInquerito());
-        }
-        return lstInc;
-    }
-    
     private void fetchInqueritos(){
         inqueritos = incFac.findAll();
     }
+    
+    public List<Resposta> getRespostasPergunta(Pergunta p){
+        return perguntasRespostas.get(p);
+    }
+    
     
 }
