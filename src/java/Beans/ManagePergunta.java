@@ -5,11 +5,17 @@
  */
 package Beans;
 
+import Entities.Inquerito;
+import EntityBeans.InqueritoFacade;
+import EntityBeans.PerguntaFacade;
+import EntityBeans.RespostaFacade;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import javax.ejb.EJB;
 import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ManagedBean;
 
@@ -20,12 +26,25 @@ import javax.faces.bean.ManagedBean;
 @ManagedBean
 @SessionScoped
 public class ManagePergunta implements Serializable{
-
+    
+    
+    private String inquerito;
     private Map<String, List<String>> perguntasRespostas;
     private List<String> respostas;
     private List<String> dummy;
     private String pergunta;
     private String resposta;
+    
+    private Date dataInit;
+    private Date dataFim;
+    
+    @EJB
+    InqueritoFacade incFac;
+    @EJB
+    PerguntaFacade perFac;
+    @EJB
+    RespostaFacade resFac;
+    
     
     /**
      * Creates a new instance of ManagePergunta
@@ -99,6 +118,12 @@ public class ManagePergunta implements Serializable{
         respostas = new ArrayList();
         resposta = "";
         pergunta = "";
+    }
+    
+    public void deploy(){
+        Inquerito i = new Inquerito();
+        i.setTituloInquerito(inquerito);
+        //incFac.create({});
     }
 
 }

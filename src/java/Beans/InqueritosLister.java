@@ -21,9 +21,25 @@ import javax.faces.bean.ViewScoped;
 @ViewScoped
 public class InqueritosLister {
     private List<Inquerito> inqueritos;
+    private List<String> listaInqueritos;
     @EJB
     InqueritoFacade incFac;
 
+    public List<String> getListaInqueritos() {
+        fetchInqueritos();
+        listaInqueritos = new ArrayList();
+        for (Inquerito inc : inqueritos) {
+            listaInqueritos.add(inc.getTituloInquerito());
+        }
+        return listaInqueritos;
+    }
+
+    public void setListaInqueritos(List<String> listaInqueritos) {
+        this.listaInqueritos = listaInqueritos;
+    }
+
+    
+    
     public List<Inquerito> getInqueritos() {
         return inqueritos;
     }
