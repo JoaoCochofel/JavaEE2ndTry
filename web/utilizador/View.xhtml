@@ -15,6 +15,10 @@
             </h:panelGroup>
             <h:form>
                 <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewUtilizadorLabel_passWord}"/>
+                    <h:outputText value="#{utilizadorController.selected.passWord}" title="#{bundle.ViewUtilizadorTitle_passWord}"/>
+                    <h:outputText value="#{bundle.ViewUtilizadorLabel_idUtilizador}"/>
+                    <h:outputText value="#{utilizadorController.selected.idUtilizador}" title="#{bundle.ViewUtilizadorTitle_idUtilizador}"/>
                     <h:outputText value="#{bundle.ViewUtilizadorLabel_telefone}"/>
                     <h:outputText value="#{utilizadorController.selected.telefone}" title="#{bundle.ViewUtilizadorTitle_telefone}"/>
                     <h:outputText value="#{bundle.ViewUtilizadorLabel_mail}"/>
@@ -35,7 +39,7 @@
                 <h:commandLink action="#{utilizadorController.prepareList}" value="#{bundle.ViewUtilizadorShowAllLink}"/>
                 <br />
                 <br />
-                <h:link outcome="/index2" value="#{bundle.ViewUtilizadorIndexLink}"/>
+                <h:link outcome="/index" value="#{bundle.ViewUtilizadorIndexLink}"/>
 
             </h:form>
         </ui:define>

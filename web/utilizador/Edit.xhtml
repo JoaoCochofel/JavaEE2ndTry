@@ -15,6 +15,8 @@
             </h:panelGroup>
             <h:form>
                 <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditUtilizadorLabel_passWord}" for="passWord" />
+                    <h:inputText id="passWord" value="#{utilizadorController.selected.passWord}" title="#{bundle.EditUtilizadorTitle_passWord}" />
                     <h:outputLabel value="#{bundle.EditUtilizadorLabel_idUtilizador}" for="idUtilizador" />
                     <h:inputText id="idUtilizador" value="#{utilizadorController.selected.idUtilizador}" title="#{bundle.EditUtilizadorTitle_idUtilizador}" />
                     <h:outputLabel value="#{bundle.EditUtilizadorLabel_telefone}" for="telefone" />
@@ -36,7 +38,7 @@
                 <h:commandLink action="#{utilizadorController.prepareList}" value="#{bundle.EditUtilizadorShowAllLink}" immediate="true"/>
                 <br />
                 <br />
-                <h:link outcome="/index2" value="#{bundle.EditUtilizadorIndexLink}" />
+                <h:link outcome="/index" value="#{bundle.EditUtilizadorIndexLink}" />
             </h:form>
         </ui:define>
     </ui:composition>
