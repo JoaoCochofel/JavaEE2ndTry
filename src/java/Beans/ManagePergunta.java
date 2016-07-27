@@ -32,7 +32,6 @@ public class ManagePergunta implements Serializable {
     private String inquerito;
     private Map<String, List<String>> perguntasRespostas;
     private List<String> respostas;
-    private List<String> dummy;
     private String pergunta;
     private String resposta;
 
@@ -51,16 +50,7 @@ public class ManagePergunta implements Serializable {
      */
     public ManagePergunta() {
         respostas = new ArrayList<>();
-        dummy = new ArrayList<>();
         perguntasRespostas = new HashMap<>();
-    }
-
-    public List<String> getDummy() {
-        return dummy;
-    }
-
-    public void setDummy(List<String> dummy) {
-        this.dummy = dummy;
     }
 
     public String getResposta() {
@@ -101,10 +91,6 @@ public class ManagePergunta implements Serializable {
 
     public void add() {
         respostas.add("");
-        System.out.println("tamanho de respostas:" + respostas.size());
-        for (String resposta1 : respostas) {
-            System.out.println(resposta1);
-        }
     }
 
     public String addMap() {
