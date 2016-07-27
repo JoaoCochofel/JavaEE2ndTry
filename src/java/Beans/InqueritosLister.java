@@ -32,6 +32,8 @@ public class InqueritosLister implements Serializable{
     private List<Resposta> respostasDadas;
     long idInq;
     
+    private Inquerito inquerito;
+    
     @EJB
     InqueritoFacade incFac;
     @EJB
@@ -46,6 +48,32 @@ public class InqueritosLister implements Serializable{
 
     public void setRespostasDadas(List<Resposta> respostasDadas) {
         this.respostasDadas = respostasDadas;
+    }
+    
+    public void setInquerito(Inquerito inquerito){
+        this.inquerito = inquerito;
+    }
+    
+    public Inquerito getInquerito(){
+        List<Pergunta> tmpPergunta = new ArrayList();
+        List<Resposta> tmpResposta = new ArrayList();
+        tmpPergunta = perFac.findAll();
+        tmpResposta = resFac.findAll();
+        List<Resposta> resTmp2;
+        perguntasRespostas = new HashMap();
+        inquerito = inqueritos.get((int)idInq);
+        for (Pergunta per : tmpPergunta) {
+            resTmp2 = new ArrayList();
+            if(per.getInquerito().getIdInquerito() == idInq){
+                for (Resposta resposta : tmpResposta) {
+                    if(resposta.getPergunta().getIdPergunta().equals(per.getIdPergunta())){
+                        resTmp2.add(resposta);
+                    }
+                }
+            }
+            perguntasRespostas.put(per, resTmp2);
+        }
+        return inquerito;
     }
     
     public String selectInq(long idInq){
@@ -68,27 +96,6 @@ public class InqueritosLister implements Serializable{
     
     public List<Resposta> getRespostasPergunta(Pergunta p){
         return perguntasRespostas.get(p);
-    }
-    
-    public Inquerito getInquerito(){
-        List<Pergunta> tmpPergunta = new ArrayList();
-        List<Resposta> tmpResposta = new ArrayList();
-        tmpPergunta = perFac.findAll();
-        tmpResposta = resFac.findAll();
-        List<Resposta> resTmp2;
-        perguntasRespostas = new HashMap();
-        for (Pergunta per : tmpPergunta) {
-            resTmp2 = new ArrayList();
-            if(per.getInquerito().getIdInquerito() == idInq){
-                for (Resposta resposta : tmpResposta) {
-                    if(resposta.getPergunta().getIdPergunta().equals(per.getIdPergunta())){
-                        resTmp2.add(resposta);
-                    }
-                }
-            }
-            perguntasRespostas.put(per, resTmp2);
-        }
-        return inqueritos.get((int)idInq);
     }
     
     
