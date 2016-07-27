@@ -101,10 +101,6 @@ public class ManagePergunta implements Serializable {
 
     public void add() {
         respostas.add("");
-        System.out.println("tamanho de respostas:" + respostas.size());
-        for (String resposta1 : respostas) {
-            System.out.println(resposta1);
-        }
     }
 
     public String addMap() {

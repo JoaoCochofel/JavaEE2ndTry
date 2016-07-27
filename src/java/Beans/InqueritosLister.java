@@ -8,17 +8,24 @@ package Beans;
 import Entities.Inquerito;
 import Entities.Pergunta;
 import Entities.Resposta;
+import Entities.Utilizador;
 import EntityBeans.InqueritoFacade;
 import EntityBeans.PerguntaFacade;
 import EntityBeans.RespostaFacade;
+import static com.sun.corba.se.spi.presentation.rmi.StubAdapter.request;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import javax.annotation.Resource;
 import javax.ejb.EJB;
+import javax.ejb.SessionContext;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.servlet.http.HttpSession;
+
+
 
 /**
  *
@@ -41,6 +48,9 @@ public class InqueritosLister implements Serializable{
     @EJB
     RespostaFacade resFac;
     
+    
+    @Resource
+    private SessionContext context;
 
     public List<Resposta> getRespostasDadas() {
         return respostasDadas;
@@ -53,6 +63,16 @@ public class InqueritosLister implements Serializable{
     public void setInquerito(Inquerito inquerito){
         this.inquerito = inquerito;
     }
+
+    public Map<Pergunta, List<Resposta>> getPerguntasRespostas() {
+        return perguntasRespostas;
+    }
+
+    public void setPerguntasRespostas(Map<Pergunta, List<Resposta>> perguntasRespostas) {
+        this.perguntasRespostas = perguntasRespostas;
+    }
+    
+    
     
     public Inquerito getInquerito(){
         List<Pergunta> tmpPergunta = new ArrayList();
@@ -98,5 +118,13 @@ public class InqueritosLister implements Serializable{
         return perguntasRespostas.get(p);
     }
     
+    public String deploy(){
+        
+        
+//        Utilizador user = 
+//        
+//        return "yes!";
+    }
+
     
 }
