@@ -12,15 +12,18 @@
         <h1>Selecione um inquerito</h1>
 
         <ul>
-            <ui:repeat value="#{inqueritosLister.listaInqueritos}" var="inquerito">
+            <h:form>
+            <ui:repeat value="#{inqueritosLister.inqueritos}" var="inquerito" varStatus="status">
                 <li>
-                    <a href="#{inquerito}"> Titulo</a>
                     
-                    <h:link  value="#{inquerito}" outcome="titulo">
-                        <f:param name="titulo" value="#{inquerito}" />
-                    </h:link>
+                    <h:commandLink value="#{inquerito.tituloInquerito}" action="#{inqueritosLister.selectInq(inquerito.idInquerito)}"/>
+                    
+                    <!--<h:link  value="#{inquerito}" outcome="titulo">
+                        <f:param name="titulo" value="#{status.index}" />
+                    </h:link>-->
                 </li>
             </ui:repeat>
+            </h:form>
         </ul>
 
     </h:body>

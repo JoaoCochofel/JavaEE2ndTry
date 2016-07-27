@@ -22,6 +22,8 @@ import javax.inject.Named;
 @Named(value = "ControlUser")
 public class ControlUser implements Serializable{
 
+    
+    
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
     

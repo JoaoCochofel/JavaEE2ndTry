@@ -7,6 +7,7 @@ package Beans;
 
 import Entities.Inquerito;
 import EntityBeans.InqueritoFacade;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.EJB;
@@ -19,9 +20,12 @@ import javax.faces.bean.ViewScoped;
  */
 @ManagedBean
 @ViewScoped
-public class InqueritosLister {
+public class InqueritosLister implements Serializable{
     private List<Inquerito> inqueritos;
     private List<String> listaInqueritos;
+    private int selectedIndex;
+    long idInq;
+    
     @EJB
     InqueritoFacade incFac;
 
@@ -38,9 +42,23 @@ public class InqueritosLister {
         this.listaInqueritos = listaInqueritos;
     }
 
+    public int getSelectedIndex() {
+        return selectedIndex;
+    }
+
+    public String selectInq(long idInq){
+        this.idInq = idInq;
+        return("View");
+    }
+    
+    public void setSelectedIndex(int selectedIndex) {
+        this.selectedIndex = selectedIndex;
+    }
+
     
     
     public List<Inquerito> getInqueritos() {
+        fetchInqueritos();
         return inqueritos;
     }
 
