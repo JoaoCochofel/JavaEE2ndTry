@@ -4,9 +4,10 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:b="http://bootsfaces.net/ui">
-   
+
     <h:head>
         <title>GesInquerito</title>
+        <h:outputStylesheet name="css/jsfcrud.css"/>
         <meta name="author" content="Riccardo Massera"></meta>
         <style type="text/css">
             .form-signin {
@@ -38,6 +39,12 @@
                 <b:commandButton look="primary btn-block" value="Registar" icon="log-in" size="lg" action="#{controlBean.createUser}"/>
             </h:form>
         </b:container>
-        
+
+        <br />
+        <h:link outcome="/tipoUtilizador/List" value="Show All TipoUtilizador Items"/>
+        <br />
+        <h:link outcome="/utilizador/List" value="Show All Utilizador Items"/>
     </h:body>
+
+
 </html>

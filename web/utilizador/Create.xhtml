@@ -16,25 +16,27 @@
             <h:form>
                 <h:panelGrid columns="2">
                     <h:outputLabel value="#{bundle.CreateUtilizadorLabel_telefone}" for="telefone" />
-                    <h:inputText id="telefone" value="#{utilizadorController.selected.telefone}" title="#{bundle.CreateUtilizadorTitle_telefone}" />
+                    <h:inputText id="telefone" value="#{controlUser.user.telefone}" title="#{bundle.CreateUtilizadorTitle_telefone}" />
                     <h:outputLabel value="#{bundle.CreateUtilizadorLabel_mail}" for="mail" />
-                    <h:inputText id="mail" value="#{utilizadorController.selected.mail}" title="#{bundle.CreateUtilizadorTitle_mail}" />
+                    <h:inputText id="mail" value="#{controlUser.user.mail}" title="#{bundle.CreateUtilizadorTitle_mail}" />
                     <h:outputLabel value="#{bundle.CreateUtilizadorLabel_nome}" for="nome" />
-                    <h:inputText id="nome" value="#{utilizadorController.selected.nome}" title="#{bundle.CreateUtilizadorTitle_nome}" />
+                    <h:inputText id="nome" value="#{controlUser.user.nome}" title="#{bundle.CreateUtilizadorTitle_nome}" />
                     
                     <h:outputLabel value="Password" for="password" />
-                    <h:inputSecret id="password" value="#{utilizadorController.selected.passWord}" title="Password" />
+                    <h:inputSecret id="password" value="#{controlUser.user.passWord}" title="Password" />
                     
                     
                     <h:outputLabel value="#{bundle.CreateUtilizadorLabel_tipoUtilizador}" for="tipoUtilizador" />
-                    <h:selectOneMenu id="tipoUtilizador" value="#{tipoUtilizadorController.selected.designacao}" title="#{bundle.CreateUtilizadorTitle_tipoUtilizador}" >
-                        <f:selectItem itemValue="Admin"/>
-                        <f:selectItem itemValue="Manager"/>
-                        <f:selectItem itemValue="User"/>
+                    <h:selectOneMenu value="#{controlUser.idTipo}">
+                        <f:selectItems  var="tipo" itemValue="#{tipo.idTipoUtilizador}" value="#{controlUser.tipoUtilizador}" itemLabel="#{tipo.designacao}"/>
                     </h:selectOneMenu>
+                    
+                    
+                    
+    
                 </h:panelGrid>
                 <br />
-                <h:commandLink action="#{utilizadorController.create}" value="#{bundle.CreateUtilizadorSaveLink}" />
+                <h:commandLink action="#{controlUser.insertUser}" value="#{bundle.CreateUtilizadorSaveLink}" />
                 <br />
                 <br />
                 <h:commandLink action="#{utilizadorController.prepareList}" value="#{bundle.CreateUtilizadorShowAllLink}" immediate="true"/>

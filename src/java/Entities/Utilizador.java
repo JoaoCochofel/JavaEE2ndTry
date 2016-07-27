@@ -19,7 +19,7 @@ public class Utilizador implements Serializable {
 
     @Column(unique = true)
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long idUtilizador;
     
     @Basic

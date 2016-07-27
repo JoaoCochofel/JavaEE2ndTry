@@ -29,4 +29,8 @@ public class UtilizadorFacade extends AbstractFacade<Utilizador> {
         super(Utilizador.class);
     }
     
+    public void createUser(Utilizador user){
+        em.persist(user);
+    }
+    
 }
