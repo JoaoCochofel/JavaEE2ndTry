@@ -123,8 +123,8 @@ public class InqueritosLister implements Serializable{
         
 //        Utilizador user = 
 //        
-//        return "yes!";
-    //}
+        return "yes!";
+    }
 
     
 }
