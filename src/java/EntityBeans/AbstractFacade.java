@@ -7,6 +7,7 @@ package EntityBeans;
 
 import java.util.List;
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 
 /**
  *
@@ -59,6 +60,18 @@ public abstract class AbstractFacade<T> {
         cq.select(getEntityManager().getCriteriaBuilder().count(rt));
         javax.persistence.Query q = getEntityManager().createQuery(cq);
         return ((Long) q.getSingleResult()).intValue();
+    }
+    
+    public List<T> objectByTextMatch(String columnName, String value) {
+        EntityManager em = getEntityManager();
+        assert em != null;
+
+        String tableName = entityClass.getSimpleName(); // entityClass.getAnnotation(Table.class).name();
+        Query q = em.createQuery("SELECT e FROM " + tableName
+                + " e" + " WHERE " + "e." + columnName + "=?1");
+        q.setParameter(1, value);
+        List<T> some = q.getResultList();
+        return some;
     }
     
 }
