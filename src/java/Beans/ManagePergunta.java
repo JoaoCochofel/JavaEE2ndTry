@@ -5,53 +5,53 @@
  */
 package Beans;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import javax.annotation.PostConstruct;
+import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
 
 /**
  *
  * @author João
  */
 @ManagedBean
-@ViewScoped
-public class ManagePergunta {
+@SessionScoped
+public class ManagePergunta implements Serializable{
 
     private Map<String, List<String>> perguntasRespostas;
-    private Map<String, String> respostas;
+    private List<String> respostas;
+    private List<String> dummy;
     private String pergunta;
     private String resposta;
-    private int i=1;
-
+    
     /**
      * Creates a new instance of ManagePergunta
      */
     public ManagePergunta() {
-        respostas = new HashMap<>();
+        respostas = new ArrayList<>();
+        dummy = new ArrayList<>();
         perguntasRespostas = new HashMap<>();
     }
 
+    public List<String> getDummy() {
+        return dummy;
+    }
+
+    public void setDummy(List<String> dummy) {
+        this.dummy = dummy;
+    }
+    
     public String getResposta() {
         return resposta;
     }
+    
 
     public void setResposta(String resposta) {
         this.resposta = resposta;
     }
-
-    public int getI() {
-        return i;
-    }
-
-    public void setI(int i) {
-        this.i = i;
-    }
-    
-    
 
     public Map<String, List<String>> getPerguntasRespostas() {
         return perguntasRespostas;
@@ -61,11 +61,11 @@ public class ManagePergunta {
         this.perguntasRespostas = perguntasRespostas;
     }
 
-    public Map<String, String> getRespostas() {
+    public List<String> getRespostas() {
         return respostas;
     }
 
-    public void setRespostas(Map<String, String> respostas) {
+    public void setRespostas(List<String> respostas) {
         this.respostas = respostas;
     }
     
@@ -82,17 +82,23 @@ public class ManagePergunta {
     }
     
     public void add() {
-        respostas.put(i+"" ,resposta);
-        i++;
+        respostas.add("");
+        System.out.println("tamanho de respostas:"+respostas.size());
+        for (String resposta1 : respostas) {
+            System.out.println(resposta1);
+        }
     }
     
     public void addMap(){
-        List<String> l = new ArrayList();
-        l.addAll(respostas.values());
-        perguntasRespostas.put(pergunta, l);
-        for (List<String> res : perguntasRespostas.values()) {
-            System.out.println(res);
+        for (String resposta1 : respostas) {
+            if(resposta1.isEmpty()){
+                respostas.remove(resposta1);
+            }
         }
+        perguntasRespostas.put(pergunta, respostas);
+        respostas = new ArrayList();
+        resposta = "";
+        pergunta = "";
     }
 
 }
