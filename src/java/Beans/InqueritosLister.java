@@ -48,10 +48,6 @@ public class InqueritosLister implements Serializable{
     @EJB
     RespostaFacade resFac;
     
-    
-    @Resource
-    private SessionContext context;
-
     public List<Resposta> getRespostasDadas() {
         return respostasDadas;
     }
@@ -97,6 +93,7 @@ public class InqueritosLister implements Serializable{
     }
     
     public String selectInq(long idInq){
+        inquerito = getInquerito();
         this.idInq = idInq;
         this.inquerito= getInquerito();
         return("View");
@@ -120,10 +117,6 @@ public class InqueritosLister implements Serializable{
     }
     
     public String deploy(){
-        
-        
-//        Utilizador user = 
-//        
         return "yes!";
     }
 
