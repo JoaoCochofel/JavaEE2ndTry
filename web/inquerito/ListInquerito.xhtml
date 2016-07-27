@@ -13,12 +13,12 @@
         <h1>Selecione um inquerito</h1>
 
         <ul>
-            <ui:repeat value="#{inqueritosLister.listaInqueritos}" var="inquerito">
+            <ui:repeat value="#{inqueritosLister.listaInqueritos}" var="inquerito" varStatus="status">
                 <li>
-                    <a href="#{inquerito}"> Titulo</a>
+                    <a href="#{inquerito}"> Inquerito </a>
                     
-                    <h:link  value="#{inquerito}" outcome="titulo">
-                        <f:param name="titulo" value="#{inquerito}" />
+                    <h:link  value="#{inquerito}" outcome="inquerito">
+                        <f:param name="titulo" value="#{status.index}" />
                     </h:link>
                 </li>
             </ui:repeat>
