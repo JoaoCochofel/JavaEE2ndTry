@@ -28,7 +28,7 @@ public class Resposta implements Serializable {
     private Pergunta pergunta;
 
     @Basic
-    private String respCerta;
+    private Boolean respCerta;
 
     public Resposta() {
 
@@ -58,11 +58,11 @@ public class Resposta implements Serializable {
         this.pergunta = pergunta;
     }
 
-    public String getRespCerta() {
+    public Boolean getRespCerta() {
         return this.respCerta;
     }
 
-    public void setRespCerta(String respCerta) {
+    public void setRespCerta(Boolean respCerta) {
         this.respCerta = respCerta;
     }
 }
