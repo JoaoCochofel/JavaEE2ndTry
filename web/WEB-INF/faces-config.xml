@@ -48,7 +48,7 @@
     <navigation-rule>
         <navigation-case>
             <from-outcome>viewUser</from-outcome>
-            <to-view-id>/faces/utilizador/View.xhtml</to-view-id>
+            <to-view-id>/faces/utilizador/List.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
     
@@ -69,7 +69,7 @@
     <navigation-rule>
         <navigation-case>
             <from-outcome>viewUserType</from-outcome>
-            <to-view-id>/faces/tipoUtilizador/View.xhtml</to-view-id>
+            <to-view-id>/faces/tipoUtilizador/List.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule> 
     <navigation-rule>
@@ -82,6 +82,13 @@
         <navigation-case>
             <from-outcome>editUserType</from-outcome>
             <to-view-id>/faces/tipoUtilizador/Edit.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule> 
+    
+    <navigation-rule>
+        <navigation-case>
+            <from-outcome>sucesso</from-outcome>
+            <to-view-id>/faces/notificateBackup.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule> 
     

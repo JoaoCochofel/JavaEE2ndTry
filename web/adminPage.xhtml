@@ -25,15 +25,13 @@
                 <br></br>
                 <b:commandButton value="Ver Utilizadores" icon="log-in" size="lg" action="#{controlBean.viewUser}"/>
                 <b:commandButton value="Criar Utilizador" icon="log-in" size="lg" action="#{controlBean.createUser}"/>
-                <b:commandButton value="Editar Utilizador" icon="log-in" size="lg" action="#{controlBean.editUser}"/>
                 <br></br>
                 <br></br>
                 <h3 class="form-signin-heading">Tipos de utilizador</h3>
                 <br></br>
                 <b:commandButton value="Ver tipo de utilizadores" icon="log-in" size="lg" action="#{controlBean.viewUserType}"/>
                 <b:commandButton value="Criar tipo de utilizador" icon="log-in" size="lg" action="#{controlBean.createUserType}"/>
-                <b:commandButton value="Editar tipo de utilizador" icon="log-in" size="lg" action="#{controlBean.editUserType}"/>
-
+                
             </h:form>
         </b:container>
 
@@ -42,24 +40,12 @@
 
             <h:form>
                 
-                <b:selectMultiMenu value="3" label="Enter your name" required="true" 
-                                   renderLabel="true" > 
-                    <f:facet name="prepend">
-                        <h:outputText value="Escala de tempo:" />
-                    </f:facet>
-
-                    <f:selectItem itemLabel="Segundos" itemValue="1" />
-                    <f:selectItem itemLabel="Minutos" itemValue="2" />
-                    <f:selectItem itemLabel="Horas" itemValue="3" />
-                </b:selectMultiMenu>
-                
-                <b:inputText id="nome" label="Enter your name"
-                             required="true" renderLabel="true"   />
-                
-                <b:inputText id="Tempo" label="What's your age?"
-                             required="true" renderLabel="true" />
+                <h3 class="form-signin-heading">Backup</h3>
+                <b:inputText id="Tempo" label="Tempo em minutos:"
+                             required="true" renderLabel="true" value="#{controlBackup.tempo}"/>
                 <h:message for="Tempo" />
-                <b:commandButton update="@form" value="Validate constraints" />
+                <br></br>
+                <b:commandButton update="@form" value="Fazer backup" action="#{controlBackup.makeBackup}"/>
             </h:form>
 
 

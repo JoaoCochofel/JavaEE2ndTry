@@ -5,19 +5,17 @@
  */
 package Beans;
 
+import Algoritmos.SessionUtils;
 import Entities.Utilizador;
 import EntityBeans.UtilizadorFacade;
 import java.io.Serializable;
 import java.util.List;
 import javax.ejb.EJB;
-import javax.ejb.Stateless;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.inject.Named;
 import javax.validation.constraints.Size;
 import org.hibernate.validator.constraints.NotEmpty;
-
-
 
 /**
  *
@@ -28,18 +26,17 @@ import org.hibernate.validator.constraints.NotEmpty;
 @ViewScoped
 
 @Named(value = "ControlBean")
-public class ControlBean implements Serializable{
+public class ControlBean implements Serializable {
 
-    
     @EJB
     UtilizadorFacade userFac;
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
-    
+
     @Size(min = 1, max = 10)
     @NotEmpty
     private String username;
-    
+
     @Size(min = 1, max = 10)
     @NotEmpty
     private String password;
@@ -71,28 +68,31 @@ public class ControlBean implements Serializable{
     public void setPassword(String password) {
         this.password = password;
     }
-    
+
     public String checkUser() {
         List<Utilizador> userList;
         userList = userFac.findAll();
         for (Utilizador utilizador : userList) {
-            if(utilizador.getNome().equals(username) && utilizador.getPassWord().equals(password)){
-                switch(utilizador.getTipoUtilizador().getDesignacao()){
-                    case "Admin": return "adminPage";
-                    
-                    case "Manager": return "managerPage";
-                    
-                    case "User": return "userPage"; 
+            if (utilizador.getNome().equals(username) && utilizador.getPassWord().equals(password)) {
+                switch (utilizador.getTipoUtilizador().getDesignacao()) {
+                    case "Admin":
+                        return "adminPage";
+
+                    case "Manager":
+                        return "managerPage";
+
+                    case "User":
+                        return "userPage";
                 }
             }
         }
         return "error";
     }
-    
-    public String createUser(){
+
+    public String createUser() {
         return "newUser";
     }
-    
+
     public String viewUser() {
         return "viewUser";
     }
@@ -112,6 +112,10 @@ public class ControlBean implements Serializable{
     public String editUserType() {
         return "editUserType";
     }
-    
-    
+
+    public String printUser() {
+        System.out.println(this.getUsername());
+        return this.getUsername();
+
+    }
 }
