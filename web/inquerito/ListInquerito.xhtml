@@ -17,11 +17,10 @@
             <ui:repeat value="#{inqueritosLister.inqueritos}" var="inquerito" varStatus="status">
                 <li>
                     
-                    <h:commandLink value="#{inquerito.tituloInquerito}" action="#{inqueritosLister.selectInq(inquerito.idInquerito)}"/>
+                    <h:commandLink value="#{inquerito.tituloInquerito}" 
+                                   action="#{inqueritosLister.selectInq(inquerito.idInquerito)}"/>
                     
-                    <!--<h:link  value="#{inquerito}" outcome="titulo">
-                        <f:param name="titulo" value="#{status.index}" />
-                    </h:link>-->
+                
                 </li>
             </ui:repeat>
             </h:form>
