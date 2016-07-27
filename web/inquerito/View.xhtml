@@ -10,8 +10,19 @@
     <h:body>
         <h:form>
 
-            <h:outputText value="#{inqueritosLister.inquerito.tituloInquerito}"/>
+            #{inqueritosLister.inquerito.tituloInquerito}
+
+            <h:dataTable value="#{inqueritosLister.}" var="item">
+                <h:column>
+                    
+                    #{item.}
+                    
+                </h:column>
+            </h:dataTable>
+
             
+
+
 
 
         </h:form>

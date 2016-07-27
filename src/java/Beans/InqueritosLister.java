@@ -61,7 +61,7 @@ public class InqueritosLister implements Serializable{
         tmpResposta = resFac.findAll();
         List<Resposta> resTmp2;
         perguntasRespostas = new HashMap();
-        inquerito = inqueritos.get((int)idInq);
+        inquerito =  incFac.findAll().get((int)idInq);
         for (Pergunta per : tmpPergunta) {
             resTmp2 = new ArrayList();
             if(per.getInquerito().getIdInquerito() == idInq){
@@ -78,6 +78,7 @@ public class InqueritosLister implements Serializable{
     
     public String selectInq(long idInq){
         this.idInq = idInq;
+        this.inquerito= getInquerito();
         return("View");
     }
     
