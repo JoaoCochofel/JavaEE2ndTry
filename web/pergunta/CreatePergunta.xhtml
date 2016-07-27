@@ -9,16 +9,21 @@
     </h:head>
     <h:body>
             <h:form>
+                
                 <p:outputLabel for="bar" value="Pergunta:" />
                 <p:inputText id="bar" value="#{managePergunta.pergunta}" />
-                <ui:repeat value="#{managePergunta.i}" var="item">
-                    <p:outputLabel for="foo" value="Resposta #{managePergunta.i}" />
-                    <p:inputText id="foo" value="#{managePergunta.resposta}" />
+                <br/>
+                
+                <ui:repeat value="#{managePergunta.respostas}" var="item" varStatus="status">
+                    <p:outputLabel for="foo" value="Resposta #{status.index}" />
+                    <p:inputText id="foo" value="#{managePergunta.respostas[status.index]}" />
                     <p:commandButton value="Remove" action="#{managePergunta.remove(item)}" update="@form" />
                     <br/>
                 </ui:repeat>
+                
                 <p:commandButton value="Add" action="#{managePergunta.add}" update="@form" />
                 <p:commandButton value="Submit" action="#{managePergunta.addMap}" />
+                
             </h:form>
     </h:body>
 </html>
