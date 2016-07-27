@@ -7,6 +7,7 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Inquerito</title>
+        <link href="css/jsfcrud.css" rel="stylesheet"></link>
     </h:head>
     <h:body>
         <h1>Selecione um inquerito</h1>
@@ -16,11 +17,10 @@
             <ui:repeat value="#{inqueritosLister.inqueritos}" var="inquerito" varStatus="status">
                 <li>
                     
-                    <h:commandLink value="#{inquerito.tituloInquerito}" action="#{inqueritosLister.selectInq(inquerito.idInquerito)}"/>
+                    <h:commandLink value="#{inquerito.tituloInquerito}" 
+                                   action="#{inqueritosLister.selectInq(inquerito.idInquerito)}"/>
                     
-                    <!--<h:link  value="#{inquerito}" outcome="titulo">
-                        <f:param name="titulo" value="#{status.index}" />
-                    </h:link>-->
+                
                 </li>
             </ui:repeat>
             </h:form>
