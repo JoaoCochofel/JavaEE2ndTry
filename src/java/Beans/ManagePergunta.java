@@ -107,7 +107,7 @@ public class ManagePergunta implements Serializable {
         }
     }
 
-    public void addMap() {
+    public String addMap() {
         for (String resposta1 : respostas) {
             if (resposta1.isEmpty()) {
                 respostas.remove(resposta1);
@@ -117,6 +117,7 @@ public class ManagePergunta implements Serializable {
         respostas = new ArrayList();
         resposta = "";
         pergunta = "";
+        return "inquerito";
     }
 
     public void deploy() {
@@ -138,6 +139,7 @@ public class ManagePergunta implements Serializable {
                 res.setTexto(respostaq);
                 res.setPergunta(per);
                 res.setRespCerta(null); //TODO - implementar possibilidade de ser resposta certa ou nao
+                resFac.create(res);
             }
         }
 
