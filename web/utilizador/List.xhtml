@@ -22,6 +22,12 @@
                     <h:dataTable value="#{utilizadorController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
                         <h:column>
                             <f:facet name="header">
+                                <h:outputText value="#{bundle.ListUtilizadorTitle_passWord}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.passWord}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
                                 <h:outputText value="#{bundle.ListUtilizadorTitle_idUtilizador}"/>
                             </f:facet>
                             <h:outputText value="#{item.idUtilizador}"/>
@@ -44,19 +50,11 @@
                             </f:facet>
                             <h:outputText value="#{item.nome}"/>
                         </h:column>
-                        
-                                                <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListUtilizadorTitle_nome}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.nome}"/>
-                        </h:column>
-                        
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="Password"/>
+                                <h:outputText value="#{bundle.ListUtilizadorTitle_tipoUtilizador}"/>
                             </f:facet>
-                            <h:outputText value="#{item.passWord}"/>
+                            <h:outputText value="#{item.tipoUtilizador}"/>
                         </h:column>
                         <h:column>
                             <f:facet name="header">
@@ -74,7 +72,7 @@
                 <h:commandLink action="#{utilizadorController.prepareCreate}" value="#{bundle.ListUtilizadorCreateLink}"/>
                 <br />
                 <br />
-                <h:link outcome="/index2" value="#{bundle.ListUtilizadorIndexLink}"/>
+                <h:link outcome="/index" value="#{bundle.ListUtilizadorIndexLink}"/>
             </h:form>
         </ui:define>
     </ui:composition>

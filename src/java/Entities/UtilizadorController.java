@@ -1,7 +1,8 @@
 package Entities;
 
-import Entities.util.JsfUtil;
-import Entities.util.PaginationHelper;
+import Entities.Utilizador;
+import EntityBeans.util.JsfUtil;
+import EntityBeans.util.PaginationHelper;
 import EntityBeans.UtilizadorFacade;
 
 import java.io.Serializable;
@@ -24,7 +25,7 @@ public class UtilizadorController implements Serializable {
     private Utilizador current;
     private DataModel items = null;
     @EJB
-    private EntityBeans.UtilizadorFacade ejbFacade;
+    private UtilizadorFacade ejbFacade;
     private PaginationHelper pagination;
     private int selectedItemIndex;
 
