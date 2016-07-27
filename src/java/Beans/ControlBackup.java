@@ -8,13 +8,18 @@ package Beans;
 import Algoritmos.NewClass;
 import java.awt.Toolkit;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.ejb.Stateless;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
@@ -26,30 +31,17 @@ import org.hibernate.validator.constraints.NotEmpty;
  *
  * @author Altran
  */
-
 @ManagedBean
 @ViewScoped
 @Named(value = "controlBackup")
 
-public class ControlBackup {
+public class ControlBackup implements Serializable{
 
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
-
-    Toolkit toolkit;
-    Timer timer;
-    
-    static Connection con = null;
-    static Statement stmt = null;
-    static final String JDBC_DRIVER = "org.apache.derby.jdbc.ClientDriver";
-    static final String DB_URL = "jdbc:derby://localhost:1527/stocks";
-    static final String USER = "app";
-    static final String PASS = "app";
-    
-       
     @NotEmpty
     private String tipoTempo;
-    
+
     @NotEmpty
     private String tempo;
 
@@ -80,38 +72,38 @@ public class ControlBackup {
     public void setTempo(String tempo) {
         this.tempo = tempo;
     }
-    
-    class RemindTask extends TimerTask {
 
-        @Override
-        public void run() {
-            System.out.println("Time's up!");
-            NewClass nc = new NewClass();
-            
+    //public long myLong = Integer.parseInt(this.getTempo()) * 60 * 1000;
+    public String teste;
 
-            
-            //Faz backup
-          //  String sucess = "Guardado com Sucesso";
-        //FileOutputStream fout = new FileOutputStream("clientesBin.bin");
-        //ObjectOutputStream oos = new ObjectOutputStream(fout);
+    public String makeBackup() {
 
-            System.exit(0); //Stops the AWT thread (and everything else)
-        }
+        long myLong = Integer.parseInt(this.getTempo()) * 60 * 1000;
+        // String teste;
+
+        final ControlBackup test = new ControlBackup();
+
+        NewClass nc = new NewClass();
+        Timer timer = new Timer();
+
+        timer.schedule(
+                new TimerTask() {
+
+            @Override
+            public void run() {
+                try {
+                    nc.guardar();
+                } catch (IOException ex) {
+                    Logger.getLogger(ControlBackup.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (SQLException ex) {
+                    Logger.getLogger(ControlBackup.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(ControlBackup.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }, 0, myLong);
+
+        return "sucesso";
     }
-    
-    public String makeBackup(){
 
-        toolkit = Toolkit.getDefaultToolkit();
-        timer = new Timer();
-        timer.schedule(new RemindTask(), Integer.parseInt(this.getTempo()) * 1000);
-        
-        
-        //System.out.println(this.getTipoTempo());
-        //System.out.println(this.getTempo());
-        
-        return "success";
-    }
-    
-    
-    
 }

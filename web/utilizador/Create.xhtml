@@ -15,17 +15,22 @@
             </h:panelGroup>
             <h:form>
                 <h:panelGrid columns="2">
-                    <h:outputLabel value="#{bundle.CreateUtilizadorLabel_idUtilizador}" for="idUtilizador" />
-                    <h:inputText id="idUtilizador" value="#{utilizadorController.selected.idUtilizador}" title="#{bundle.CreateUtilizadorTitle_idUtilizador}" />
                     <h:outputLabel value="#{bundle.CreateUtilizadorLabel_telefone}" for="telefone" />
                     <h:inputText id="telefone" value="#{utilizadorController.selected.telefone}" title="#{bundle.CreateUtilizadorTitle_telefone}" />
                     <h:outputLabel value="#{bundle.CreateUtilizadorLabel_mail}" for="mail" />
                     <h:inputText id="mail" value="#{utilizadorController.selected.mail}" title="#{bundle.CreateUtilizadorTitle_mail}" />
                     <h:outputLabel value="#{bundle.CreateUtilizadorLabel_nome}" for="nome" />
                     <h:inputText id="nome" value="#{utilizadorController.selected.nome}" title="#{bundle.CreateUtilizadorTitle_nome}" />
+                    
+                    <h:outputLabel value="Password" for="password" />
+                    <h:inputSecret id="password" value="#{utilizadorController.selected.passWord}" title="Password" />
+                    
+                    
                     <h:outputLabel value="#{bundle.CreateUtilizadorLabel_tipoUtilizador}" for="tipoUtilizador" />
-                    <h:selectOneMenu id="tipoUtilizador" value="#{utilizadorController.selected.tipoUtilizador}" title="#{bundle.CreateUtilizadorTitle_tipoUtilizador}" >
-                        <f:selectItems value="#{tipoUtilizadorController.itemsAvailableSelectOne}"/>
+                    <h:selectOneMenu id="tipoUtilizador" value="#{tipoUtilizadorController.selected.designacao}" title="#{bundle.CreateUtilizadorTitle_tipoUtilizador}" >
+                        <f:selectItem itemValue="Admin"/>
+                        <f:selectItem itemValue="Manager"/>
+                        <f:selectItem itemValue="User"/>
                     </h:selectOneMenu>
                 </h:panelGrid>
                 <br />
@@ -35,7 +40,6 @@
                 <h:commandLink action="#{utilizadorController.prepareList}" value="#{bundle.CreateUtilizadorShowAllLink}" immediate="true"/>
                 <br />
                 <br />
-                <h:link outcome="/index2" value="#{bundle.CreateUtilizadorIndexLink}"/>
             </h:form>
         </ui:define>
     </ui:composition>

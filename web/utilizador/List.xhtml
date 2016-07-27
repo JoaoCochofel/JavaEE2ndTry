@@ -44,11 +44,19 @@
                             </f:facet>
                             <h:outputText value="#{item.nome}"/>
                         </h:column>
+                        
+                                                <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListUtilizadorTitle_nome}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nome}"/>
+                        </h:column>
+                        
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListUtilizadorTitle_tipoUtilizador}"/>
+                                <h:outputText value="Password"/>
                             </f:facet>
-                            <h:outputText value="#{item.tipoUtilizador}"/>
+                            <h:outputText value="#{item.passWord}"/>
                         </h:column>
                         <h:column>
                             <f:facet name="header">

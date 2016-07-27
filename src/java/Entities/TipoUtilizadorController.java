@@ -179,7 +179,7 @@ public class TipoUtilizadorController implements Serializable {
         return "List";
     }
 
-    public SelectItem[] getItemsAvailableSelectMany() {
+    public SelectItem[] getItemsAvailableSelectMany() {      
         return JsfUtil.getSelectItems(ejbFacade.findAll(), false);
     }
 

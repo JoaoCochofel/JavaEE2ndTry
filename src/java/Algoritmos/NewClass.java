@@ -52,9 +52,9 @@ public class NewClass {
     @EJB
     UtilizadorInqueritoFacade userInqFac;
 
-    public String guardar() throws FileNotFoundException, IOException, SQLException, ClassNotFoundException {
+    public void guardar() throws FileNotFoundException, IOException, SQLException, ClassNotFoundException {
 
-        String sucess = "";
+        //String sucess = "";
         FileOutputStream fout = new FileOutputStream("clientesBin.bin");
         ObjectOutputStream oos = new ObjectOutputStream(fout);
 
@@ -86,24 +86,10 @@ public class NewClass {
         } catch (NullPointerException ne) {
             oos.writeObject("");
         } finally {
-            sucess = "Backup realizado com Sucesso";
+            //sucess = "sucesso";
         }
 
-        return sucess;
-    }
-
-    public static void main(String args[]) {
-        NewClass nc = new NewClass();
-        try {
-            String text = nc.guardar();
-            System.out.println(text);
-        } catch (IOException ex) {
-            Logger.getLogger(NewClass.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            Logger.getLogger(NewClass.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(NewClass.class.getName()).log(Level.SEVERE, null, ex);
-        }
+       // return sucess;
     }
 
 }
