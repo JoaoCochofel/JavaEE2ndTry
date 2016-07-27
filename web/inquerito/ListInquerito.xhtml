@@ -14,14 +14,14 @@
         <ul>
             <ui:repeat value="#{inqueritosLister.listaInqueritos}" var="inquerito">
                 <li>
-                    <h:link value="#{inquerito}" outcome="inquerito">
-                       
+                    <a href="#{inquerito}"> Titulo</a>
+                    
+                    <h:link  value="#{inquerito}" outcome="titulo">
+                        <f:param name="titulo" value="#{inquerito}" />
                     </h:link>
                 </li>
             </ui:repeat>
         </ul>
-
-
 
     </h:body>
 
