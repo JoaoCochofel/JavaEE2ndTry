@@ -29,4 +29,11 @@ public class InqueritoFacade extends AbstractFacade<Inquerito> {
         super(Inquerito.class);
     }
     
+    public void guardaInq(Inquerito inq){
+        em.persist(inq);
+    }
+    
+    public long getLast(){
+        return (((Long)em.createQuery("select max(i.idInquerito) from Inquerito i").getSingleResult())+1);
+    }
 }
