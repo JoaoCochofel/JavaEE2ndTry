@@ -97,7 +97,7 @@ public class ControlUser implements Serializable {
         userFac.create(user);
         
 
-        return "sucess";
+        return "sucesso";
     }
 
   
