@@ -33,6 +33,13 @@ public class Inquerito implements Serializable {
 
     }
 
+    @Override
+    public String toString() {
+        return "Inquerito{" + "tituloInquerito=" + tituloInquerito + ", dataFim=" + dataFim + ", dataInicio=" + dataInicio + ", idInquerito=" + idInquerito + '}';
+    }
+    
+    
+
     public String getTituloInquerito() {
         return this.tituloInquerito;
     }

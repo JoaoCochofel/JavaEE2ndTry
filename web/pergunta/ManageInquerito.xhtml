@@ -5,30 +5,41 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:b="http://bootsfaces.net/ui"
-      >
+          
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Facelet Title</title>
     </h:head>
     <h:body>
         <h:form>
             <p:outputLabel for="bar" value="Inquerito: " />
-            <p:inputText id="bar" value="#{managePergunta.pergunta}" />
+            <p:inputText id="bar" value="#{managePergunta.inquerito}" />
             <br/>
 
             <ui:repeat value="#{managePergunta.perguntasRespostas.keySet}" var="item" varStatus="status">
                 Pergunta #{status.index} #{item[status.index]}
                 <ui:repeat value="#{managePergunta.perguntasRespostas.get(item[status.index])}" var="resp" varStatus="stt">
-                    resposta #{stt.index} #{resp}
+                    resposta #{stt.index} #{resp[stt.index]}
                 </ui:repeat>
 
 
             </ui:repeat>
             
-
             
-            <h:button value="Adicionar pergunta" outcome="CreatePergunta"/> <!-- este butão adiciona uma nova pergunta tem de ter uma tag: update="@form" -->
-
-
+            <p:outputLabel for="mask1" value="Início:" />
+            <p:calendar id="mask1" value="#{managePergunta.dataInit}" pattern="dd-MM-yyyy" mask="true" />
+            <h:outputText value="#{managePergunta.dataInit}">
+                <f:convertDateTime pattern="MM/dd/yyyy" />
+            </h:outputText>
+            
+            
+            <p:outputLabel for="mask2" value="Fim:" />
+            <p:calendar id="mask2" value="#{managePergunta.dataFim}" pattern="dd-MM-yyyy" mask="true" />
+            <h:outputText value="#{managePergunta.dataFim}">
+                <f:convertDateTime pattern="MM/dd/yyyy" />
+            </h:outputText>
+            
+            <p:commandButton value="Adicionar pergunta" action="CreatePergunta" update="@form"/> <!-- este butão adiciona uma nova pergunta tem de ter uma tag: update="@form" -->
             <b:commandButton value="Submit" icon="log-in" size="lg" action="#{managePergunta.deploy}"/>
 
         </h:form>
