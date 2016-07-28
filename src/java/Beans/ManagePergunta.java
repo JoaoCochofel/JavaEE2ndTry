@@ -20,6 +20,7 @@ import java.util.Map;
 import javax.ejb.EJB;
 import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ManagedBean;
+import javax.inject.Named;
 
 /**
  *
@@ -27,6 +28,7 @@ import javax.faces.bean.ManagedBean;
  */
 @ManagedBean
 @SessionScoped
+@Named(value = "managePergunta")
 public class ManagePergunta implements Serializable {
 
     private String inquerito;
@@ -106,7 +108,8 @@ public class ManagePergunta implements Serializable {
         return "inquerito";
     }
 
-    public void deploy() {
+    //public void deploy() {
+    public String deploy() {
         Inquerito inq = new Inquerito();
         Pergunta per ;
         Resposta res ;
@@ -129,6 +132,8 @@ public class ManagePergunta implements Serializable {
             }
         }
 
+        return "manage";
+        
     }
 
 }
