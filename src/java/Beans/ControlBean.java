@@ -8,11 +8,14 @@ package Beans;
 import Algoritmos.SessionUtils;
 import Entities.Utilizador;
 import EntityBeans.UtilizadorFacade;
+import static com.sun.xml.ws.security.addressing.impl.policy.Constants.logger;
 import java.io.Serializable;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.validation.constraints.Size;
 import org.hibernate.validator.constraints.NotEmpty;
@@ -118,4 +121,5 @@ public class ControlBean implements Serializable {
         return this.getUsername();
 
     }
+
 }
