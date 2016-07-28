@@ -21,19 +21,19 @@
                     <h:inputText id="mail" value="#{controlUser.user.mail}" title="#{bundle.CreateUtilizadorTitle_mail}" />
                     <h:outputLabel value="#{bundle.CreateUtilizadorLabel_nome}" for="nome" />
                     <h:inputText id="nome" value="#{controlUser.user.nome}" title="#{bundle.CreateUtilizadorTitle_nome}" />
-                    
+
                     <h:outputLabel value="Password" for="password" />
                     <h:inputSecret id="password" value="#{controlUser.user.passWord}" title="Password" />
-                    
-                    
+
+
                     <h:outputLabel value="#{bundle.CreateUtilizadorLabel_tipoUtilizador}" for="tipoUtilizador" />
                     <h:selectOneMenu value="#{controlUser.idTipo}">
                         <f:selectItems  var="tipo" itemValue="#{tipo.idTipoUtilizador}" value="#{controlUser.tipoUtilizador}" itemLabel="#{tipo.designacao}"/>
                     </h:selectOneMenu>
-                    
-                    
-                    
-    
+
+
+
+
                 </h:panelGrid>
                 <br />
                 <h:commandLink action="#{controlUser.insertUser}" value="#{bundle.CreateUtilizadorSaveLink}" />
@@ -43,6 +43,11 @@
                 <br />
                 <br />
             </h:form>
+
+            <form action="${pageContext.request.contextPath}/JavaEE2ndTry/faces/adminPage.xhtml">
+                <input type="submit" value="Voltar" />
+            </form>
+
         </ui:define>
     </ui:composition>
 

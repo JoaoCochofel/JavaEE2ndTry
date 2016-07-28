@@ -23,8 +23,8 @@
        
     <navigation-rule>
         <navigation-case>
-            <from-outcome>managePage</from-outcome>
-            <to-view-id>/faces/managePage.xhtml</to-view-id>
+            <from-outcome>managerPage</from-outcome>
+            <to-view-id>/faces/manageBean.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
     
@@ -38,7 +38,7 @@
     <navigation-rule>
         <navigation-case>
             <from-outcome>error</from-outcome>
-            <to-view-id>/faces/newjsf.xhtml</to-view-id>
+            <to-view-id>/faces/index.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
     
@@ -98,7 +98,7 @@
     
     <navigation-rule>
         <navigation-case>
-            <from-outcome>manage</from-outcome>
+            <from-outcome>managerPage</from-outcome>
             <to-view-id>/faces/manageBean.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule> 
@@ -107,6 +107,13 @@
         <navigation-case>
             <from-outcome>inquerito</from-outcome>
             <to-view-id>/faces/pergunta/ManageInquerito.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule> 
+    
+        <navigation-rule>
+        <navigation-case>
+            <from-outcome>fixe</from-outcome>
+            <to-view-id>/faces/notificateUser.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule> 
     

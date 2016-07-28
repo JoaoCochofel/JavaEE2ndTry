@@ -29,7 +29,9 @@ import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -55,26 +57,25 @@ public class ControlUser implements Serializable {
     public void setIdTipo(long idTipo) {
         this.idTipo = idTipo;
     }
-    
+
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
     @EJB
     UtilizadorFacade userFac;
 
-    
-    public List<TipoUtilizador> getTipoUtilizador(){
+    public List<TipoUtilizador> getTipoUtilizador() {
         return tipoUtilizadorFacade.findAll();
     }
-    
+
     public ControlUser() {
         user = new Utilizador();
     }
 
-    public void setNome(String nome){
+    public void setNome(String nome) {
         user.setNome(nome);
     }
-    
-    public String getNome(){
+
+    public String getNome() {
         return user.getNome();
     }
 
@@ -85,21 +86,21 @@ public class ControlUser implements Serializable {
     public void setUser(Utilizador user) {
         this.user = user;
     }
-    
-    public void setTelefone(long telef){
+
+    public void setTelefone(long telef) {
         user.setTelefone(telef);
     }
 
-
-  
-    public String insertUser(){
+    public String insertUser() {
         user.setTipoUtilizador(tipoUtilizadorFacade.find(this.idTipo));
         userFac.create(user);
-        
 
-        return "sucesso";
+        return "fixe";
     }
 
-  
+    public String printUserName() {
+        HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
+        return session.getAttribute("mySession").toString();
+    }
 
 }

@@ -12,13 +12,14 @@
             <p:growl id="growl" life="2000" />
             <p:panel>
                 <h1>Página de utilizador de inquéritos</h1>
-                
-                "Olá"
-                <p:commandButton value="Sair" ajax="false" update="growl" icon="fa-backward" validateClient="true" style="margin-right:10px" action="#{ControlUser.ret}"/>
+
+                Olá #{controlUser.printUserName()}
             </p:panel>
         </h:form>
 
-
+        <form action="${pageContext.request.contextPath}/JavaEE2ndTry/faces/index.xhtml" method="post">
+            <input type="submit" value="Logout" />
+        </form>
     </h:body>
 </html>
 
