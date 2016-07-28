@@ -13,7 +13,9 @@ import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
+import javax.servlet.http.HttpSession;
 import javax.validation.constraints.Size;
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -72,6 +74,10 @@ public class ControlBean implements Serializable {
     public String checkUser() {
         List<Utilizador> userList;
         userList = userFac.findAll();
+
+        HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
+        session.setAttribute("mySession", this.getUsername());
+
         for (Utilizador utilizador : userList) {
             if (utilizador.getNome().equals(username) && utilizador.getPassWord().equals(password)) {
                 switch (utilizador.getTipoUtilizador().getDesignacao()) {
